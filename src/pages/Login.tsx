@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../lib/firebase';
-import { ShieldCheck, Mail, Lock, ArrowLeft, Chrome } from 'lucide-react';
+import { ShieldCheck, Mail, Lock, ArrowLeft, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Login = () => {
@@ -135,7 +135,7 @@ const Login = () => {
               onClick={handleGoogleLogin}
               className="w-full py-4 px-6 border border-gray-200 rounded-2xl flex items-center justify-center gap-4 transition-all hover:border-[#FF6B00]/30"
             >
-              <Chrome size={24} className="text-[#DB4437]" />
+              <Globe size={24} className="text-[#DB4437]" />
               <span className="font-bold text-[#0A2540]">حساب جوجل الذكي</span>
             </motion.button>
           </div>
