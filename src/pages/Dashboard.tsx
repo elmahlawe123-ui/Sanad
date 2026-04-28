@@ -96,7 +96,7 @@ const Dashboard = () => {
             { icon: <Hammer size={20} />, label: 'طلبات الصيانة' },
             { icon: <Calendar size={20} />, label: 'المواعيد المجدولة' },
             { icon: <CreditCard size={20} />, label: 'الفواتير والمدفوعات', path: '/invoices' },
-            { icon: <User size={20} />, label: 'الملف الشخصي' },
+            { icon: <User size={20} />, label: 'الملف الشخصي', path: '/profile' },
             { icon: <Settings size={20} />, label: 'إعدادات الحساب' }
           ].map((item: any, i) => (
             <button 

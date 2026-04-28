@@ -10,6 +10,7 @@ import RequestService from './pages/RequestService';
 import Diagnostics from './pages/Diagnostics';
 import Projects from './pages/Projects';
 import Invoices from './pages/Invoices';
+import UserProfile from './pages/UserProfile';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/diagnostics" element={<Diagnostics />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/invoices" element={<Invoices />} />
+            <Route path="/profile" element={<UserProfile />} />
           </Routes>
         </Layout>
       </Router>
