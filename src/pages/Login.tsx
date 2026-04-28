@@ -12,6 +12,15 @@ const Login = () => {
 
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    
+    // Demo Mode Check
+    if (!import.meta.env.VITE_FIREBASE_API_KEY || email === 'demo@sanad.tech') {
+      localStorage.setItem('demo_user', 'true');
+      window.location.href = '#/dashboard';
+      return;
+    }
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
@@ -21,11 +30,20 @@ const Login = () => {
   };
 
   const handleGoogleLogin = async () => {
+    setError('');
+    
+    // Demo Mode Check
+    if (!import.meta.env.VITE_FIREBASE_API_KEY) {
+      localStorage.setItem('demo_user', 'true');
+      window.location.href = '#/dashboard';
+      return;
+    }
+
     try {
       await signInWithPopup(auth, googleProvider);
       navigate('/dashboard');
     } catch (err: any) {
-      setError('فشل تسجيل الدخول عبر جوجل');
+      setError('فشل تسجيل الدخول عبر جوجل. يرجى التأكد من إعدادات Firebase');
     }
   };
 

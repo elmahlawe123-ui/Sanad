@@ -115,8 +115,12 @@ const Dashboard = () => {
 
         <div className="p-6 mt-auto border-t border-gray-50">
           <button 
-            onClick={() => signOut(auth)}
-            className="w-full flex items-center gap-4 p-4 rounded-2xl text-red-500 hover:bg-red-50 transition-all font-bold"
+            onClick={async () => {
+              localStorage.removeItem('demo_user');
+              await signOut(auth);
+              navigate('/login');
+            }}
+            className="w-full flex items-center gap-4 p-4 rounded-2xl text-red-500 hover:bg-red-50 transition-all font-bold flex-row-reverse"
           >
             <LogOut size={20} />
             <span>تسجيل الخروج</span>

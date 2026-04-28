@@ -15,15 +15,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // If Firebase is not configured, use a mock user for the demo
-    if (auth.app.options.apiKey === "YOUR_API_KEY") {
-      console.log("DEMO MODE ACTIVE");
-      setUser({
-        uid: 'demo-123',
-        email: 'demo@sanad.tech',
-        displayName: 'عميل تجريبي (Demo)',
-        emailVerified: true,
-      } as any);
+    const isDemoMode = auth.app.options.apiKey === "demo-mode" || auth.app.options.apiKey === "YOUR_API_KEY";
+    const isDemoUser = localStorage.getItem('demo_user') === 'true';
+
+    if (isDemoMode) {
+      if (isDemoUser) {
+        setUser({
+          uid: 'demo-123',
+          email: 'demo@sanad.tech',
+          displayName: 'عميل تجريبي (Demo)',
+          emailVerified: true,
+        } as any);
+      } else {
+        setUser(null);
+      }
       setLoading(false);
       return;
     }
